@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import DeleteData from "./pages/deleteData";
 import EditData from "./pages/EditData";
+import SpecificData from "./pages/SpecificData";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path="/data" element={<Data />} />
+      <Route path="/data/:_id" element={<SpecificData />} />
       <Route path="/delete" element={<DeleteData/>}/>
       <Route path="/edit" element={<EditData/>}/>
     </Routes>

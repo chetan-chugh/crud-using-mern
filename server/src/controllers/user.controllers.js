@@ -71,6 +71,15 @@ exports.showData= async(req,res) => {
 
 };
 
+exports.specificData= async(req,res) => {
+  try {
+    const user = await registerSchema.findById(req.params.id);  // Find user by ID
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching user', error: error.message });
+  }
+};
+
 exports.deleteData = async (req, res) => {
   try {
     const data = await registerSchema.findOneAndDelete({name: req.user.name});

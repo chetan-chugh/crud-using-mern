@@ -59,6 +59,7 @@ function Data() {
                     </tr>
                 </table>
                 <button className="text-rose-950 mx-10"><Link to="/edit">Edit</Link></button>
+                <button className="bg-black py-2 px-3 mx-10 rounded-lg"><Link to="/data/:id">Details</Link></button>
                 <button className="bg-black py-2 px-3 mx-10 rounded-lg" onClick={deleteData}>Delete</button>
             </p>
           </div>
