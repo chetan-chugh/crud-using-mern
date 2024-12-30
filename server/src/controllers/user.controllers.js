@@ -82,13 +82,41 @@ exports.specificData= async(req,res) => {
 
 exports.deleteData = async (req, res) => {
   try {
-    const data = await registerSchema.findOneAndDelete({name: req.user.name});
-    console.log("a:",data)
-    // res.json(data);
-  } catch (error) {
-    console.log(`Error:${error}`);
+    const id  = req.params.id;
+    const deletedUser = await registerSchema.findByIdAndDelete(id);
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Error deleting user" });
   }
 }
+
+exports.updateData = async (req, res) => {
+  try {
+    const { name, email } = req.body;
+
+    if (!name || !email) {
+      return res.status(400).json({ message: "Name and email are required" });
+    }
+
+    const updatedUser = await registerSchema.findByIdAndUpdate(
+      req.params.id, 
+      { name, email }, 
+      { new: true }    
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(updatedUser);
+
+  } catch (err) {
+    console.error(err); 
+    res.status(500).json({ message: "Error updating user data" });
+  }
+};
 
 // exports.googleSubmit = async (req,res) =>{
 //     passport.use(

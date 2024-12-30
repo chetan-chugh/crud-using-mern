@@ -4,8 +4,8 @@ import Data from './pages/Data'
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Update from "./pages/Update";
 import DeleteData from "./pages/deleteData";
-import EditData from "./pages/EditData";
 import SpecificData from "./pages/SpecificData";
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path="/data" element={<Data />} />
-      <Route path="/data/:_id" element={<SpecificData />} />
-      <Route path="/delete" element={<DeleteData/>}/>
-      <Route path="/edit" element={<EditData/>}/>
+      <Route path="/update/:id" element={<Update />} />
+      <Route path="/data/:id" element={<SpecificData />} />
+      <Route path="/delete/:id" element={<DeleteData/>}/>
     </Routes>
     </>
   );
